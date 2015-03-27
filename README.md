@@ -1,3 +1,10 @@
+
+#Resources
+
+- regex url matcher: http://blog.roymj.co.in/url-validation-using-regular-expression-javascript/
+- http://code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149
+-
+
 # Project Overview
 
 In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
