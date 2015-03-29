@@ -1,5 +1,11 @@
 
-#Resources
+# Future Features
+- Header background color changes when new feed is loaded
+- Menu icon changes when menu is shown, changes back when menu is hidden
+- Menu has "Add Feed" button that will take a search term and query Google feed list and present top 5 choices to be added
+- Feed load loads 15 feeds and allows user to specify how many are displayed
+
+# Resources
 
 - regex url matcher: http://blog.roymj.co.in/url-validation-using-regular-expression-javascript/
 - http://code.tutsplus.com/tutorials/8-regular-expressions-you-should-know--net-6149
