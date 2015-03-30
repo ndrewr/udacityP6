@@ -25,11 +25,16 @@
 
 						<h1 class="header-title">Feeds</h1>
 
-						<a href="#" class="read-list">clip</a>
+						<a href="#" class="clip-btn">clip</a>
 				</div>
 
-				<div class="menu hidden">
+				<div class="menu left-menu hidden">
 						<ul class="feed-list"></ul>
+				</div>
+
+				<div class="menu right-menu hidden">
+					<p>Read Later</p>
+					<ul class=""></ul>
 				</div>
 
 				<div class="feed"></div>
@@ -38,6 +43,7 @@
 					<a class="entry-link" href="{{link}}" target="_blank">
 								<article class="entry">
 										<h2>{{title}}</h2>
+										<a class="clip-link" href="#" data-title="{{title}}" data-url="{{link}}">read later</a>
 										<p>{{contentSnippet}}</p>
 								</article>
 						</a>
@@ -47,6 +53,12 @@
 						<li>
 							<a href="#" data-id="{{id}}">{{name}}</a>
 						</li>
+				</script>
+
+				<script class="tpl-clip-list-item" type="text/x-handlebars-template">
+					<li>
+						<a class="clip-item" href="{{link}}" target="_blank">{{title}}</a>
+					</li>
 				</script>
 
 				<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

@@ -67,7 +67,7 @@ $(function() {
 
 				/* ensure the menu changes icon when btn is clicked
 				 */
-				it('will change icon when menu button is clicked', function() {
+				xit('will change icon when menu button is clicked', function() {
 					var prev_icon = icon.find('i').attr('class');
 					icon.click();
 		expect(icon.find('i').attr('class')).not.toBe(prev_icon);
@@ -128,8 +128,30 @@ $(function() {
 			/* ensure header background color changes when a new
 			 * feed is loaded
 			 */
-			it('should change header color when new feed is loaded', function() {	expect($('.header').css('backgroundColor')).not.toBe(prev_color);
+			xit('should change header color when new feed is loaded', function() {	expect($('.header').css('backgroundColor')).not.toBe(prev_color);
 			});
+		});
+
+		xdescribe('Clip Menu', function() {
+			var bod = $('body'),
+					clip_btn = $('.clip-list');
+
+			it('should be hidden by default', function() {
+				// hide menu by toggling 'menu-hidden' class on body
+				expect(bod.hasClass('menu-hidden')).toBe(true);
+			});
+
+			/* ensure the menu changes visibility when the menu
+					 * icon is clicked. Test both show and hide
+					*/
+			it('will change visibility when button is clicked', function() {
+				// process: trigger then check
+				clip_btn.click();
+				expect(bod.hasClass('menu-hidden')).not.toBe(true);
+				clip_btn.click();
+				expect(bod.hasClass('menu-hidden')).toBe(true);
+			});
+
 		});
 
 
