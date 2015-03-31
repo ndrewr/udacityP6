@@ -2,7 +2,7 @@
 
 This project builds a test suite for a web-based application that reads RSS feeds. Besides the tests specified in the project rubric, several more tests were added for "future features". Some of the new features have been implemented, others were purposely allowed to fail. The list of additional tests is provided below.
 
-# Future Features
+# Future Features & Additional Tests
 
 - Header background color changes when new feed is loaded (FAILS)
 
