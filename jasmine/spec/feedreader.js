@@ -67,7 +67,7 @@ $(function() {
 
 				/* ensure the menu changes icon when btn is clicked
 				 */
-				xit('will change icon when menu button is clicked', function() {
+				it('will change icon when menu button is clicked', function() {
 					var prev_icon = icon.find('i').attr('class');
 					icon.click();
 		expect(icon.find('i').attr('class')).not.toBe(prev_icon);
@@ -128,31 +128,75 @@ $(function() {
 			/* ensure header background color changes when a new
 			 * feed is loaded
 			 */
-			xit('should change header color when new feed is loaded', function() {	expect($('.header').css('backgroundColor')).not.toBe(prev_color);
+			it('should change header color when new feed is loaded', function() {	expect($('.header').css('backgroundColor')).not.toBe(prev_color);
 			});
 		});
 
-		xdescribe('Clip Menu', function() {
-			var bod = $('body'),
-					clip_btn = $('.clip-list');
+		describe('Clip Menu', function() {
+			var clip_menu = $('.right-menu'),
+					clip_btn = $('.clip-btn');
 
 			it('should be hidden by default', function() {
-				// hide menu by toggling 'menu-hidden' class on body
-				expect(bod.hasClass('menu-hidden')).toBe(true);
+				expect(clip_menu.hasClass('show-right-menu')).not.toBe(true);
 			});
 
-			/* ensure the menu changes visibility when the menu
-					 * icon is clicked. Test both show and hide
+			/* ensure the menu changes visibility when the clip
+					 * btn is clicked. Test both show and hide
 					*/
-			it('will change visibility when button is clicked', function() {
+			it('should change visibility when button is clicked', function() {
 				// process: trigger then check
 				clip_btn.click();
-				expect(bod.hasClass('menu-hidden')).not.toBe(true);
+				expect(clip_menu.hasClass('show-right-menu')).toBe(true);
 				clip_btn.click();
-				expect(bod.hasClass('menu-hidden')).toBe(true);
+				expect(clip_menu.hasClass('show-right-menu')).toBe(false);
 			});
-
 		});
 
+		/* 'Read Later' buttons should add the link entry
+		 * to a special list accessed by clicking 'Clips'
+		 */
+		describe('Read Later buttons', function() {
+			// test 3 expectations (currently third will fail):
+			// 1 - the number of clip entries increases by 1
+			// 2 - content url is same as clicked entry
+			// 3 - new clip will be unique; not added before
+			var test_index = Math.floor(Math.random() * $('.entry').length),
+					prev_num_entries = $('.clip-item').length,
+					clip_links,
+					new_clip_title,
+					clicked_title,
+					occurences = 0;
 
+			// trigger a 'read later' add and cache that data
+			// for comparison below
+			beforeAll(function() {
+				clip_links = $('.clip-link');
+				clip_links.eq(test_index).click(); // trigger click
+				new_clip_title = $('.clip-item').last().text();
+				clicked_title = clip_links[test_index].dataset.title;
+			});
+
+			/* ensure the link is added to clip list when 'Read Later' is clicked */
+			it('should add a link entry to Clip List when a Read Later button is clicked', function() {
+					// did number of clips increase?
+					expect($('.clip-item').length).toBeGreaterThan(prev_num_entries);
+					// did correct content get added?
+					expect(new_clip_title).toBe(clicked_title);
+			});
+
+			/* ensure that same feed entry can't be clipped twice
+			 */
+			it('should not add the same entry twice', function() {
+				// trigger click on same entry
+				clip_links.eq(test_index).click();
+
+				// was the item already in the clip list?
+				$('.clip-item').each(function() {
+					if (this.text === new_clip_title) {
+						occurences++; //# of times article appears in list
+					}
+				});
+				expect(occurences).toBeLessThan(2);
+			});
+		});
 }());

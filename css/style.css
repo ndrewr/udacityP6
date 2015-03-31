@@ -118,19 +118,11 @@ h2 {
 		transition: transform 0.2s;
 }
 
-/*
-.menu-hidden .right-menu {
-	transform: translateX(12em);
-	transition: transform 0.2s;
-}
-*/
-
 .feed {
 		margin: 4em 0 0;
 }
 
 .entry {
-/*		position: relative;*/
 		border-bottom: 1px solid #ddd;
 		padding: 1em;
 		margin: 0.5em 0;
@@ -139,6 +131,4 @@ h2 {
 .entry a {
 		display: inline-block;
 		margin-left: 2em;
-/*		position: absolute;*/
-/*		right: 0;*/
 }

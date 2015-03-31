@@ -143,13 +143,10 @@ $(function() {
 
 		$('.feed').on('click', '.clip-link', function(event) {
 				var clipList = $('.right-menu ul');
-				console.log("here the event: %O", event);
 				var title_data = event.target.dataset.title
 				var url_data = event.target.dataset.url
-
 				clipList.append(clipItemTemplate(
 					{ title: title_data, link: url_data }
 				));
-
 		});
 }());
